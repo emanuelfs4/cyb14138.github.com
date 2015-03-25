@@ -1,0 +1,115 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11-Feb-2015, 17:18:16
+    Author     : Emanuel
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    font-size: larger;
+    text-align: center;
+    font-family: sans-serif;
+    height: 100%;
+}
+
+
+body{
+   overflow: auto;
+}
+
+
+header, footer{
+    background-color: black;
+    color: white;
+}
+header{
+    height: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+footer{
+    height: 1rem;
+    font-size: 0.8rem;
+}
+main{
+    height: calc(100% - 4rem);
+    overflow: auto;
+}
+#imageDiv1{
+    height: calc(74% - 10rem);
+}
+
+#imageDiv2{
+    height: calc(72% - 10rem);
+}
+
+#buttonDiv{
+    height: 4rem;
+}
+#diceImg1{
+    height: 95%;
+    width: auto;
+}
+
+#diceImg2{
+    height: 100%;
+    width: auto;
+}
+
+button{
+    background: #070;
+    color: white;
+    cursor: pointer;
+    font-size: 1.4rem;
+    padding: 0.4rem;
+    border: none;
+    outline: none;
+    margin: 10px;
+}
+button:hover{
+    background: #060;
+}
+button:active{
+    background: #040;
+}
+
+/*
+  *{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    font-size: larger;
+    text-align: center;
+    font-family: sans-serif;
+    height: 100%;
+}
+header, footer{
+    background-color: black;
+    color: white;
+}
+header{
+    height: 3rem;
+    font-size: 3rem;
+    font-weight: bold;
+}
+footer{
+    height: 1rem;
+    font-size: 0.8rem;
+}
+#imageDiv{
+    height: calc(100% - 8rem);
+}
+#buttonDiv{
+    height: 4rem;
+}
+#diceImg{
+    height: 100%;
+}
+*/

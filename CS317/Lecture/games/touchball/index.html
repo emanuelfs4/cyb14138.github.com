@@ -1,0 +1,79 @@
+
+<html>
+    <head>
+        <title> My Game </title>
+         <meta name="viewport" content="width=device-width,user-scalable=yes" />
+        <style>
+        
+            #ball{
+                position: relative;
+                border: solid;
+            }
+            
+        </style>
+        
+        
+    </head>
+    
+    
+    <body>
+        
+        <div id="ball"> </div>
+        
+        
+        <script>
+            
+            
+            var ball = document.getElementById('ball'), wBall  = 15, hBall = 15;
+            
+            ball.style.width = wBall + 'px';
+            ball.style.height= hBall + 'px';
+            ball.style.top = Math.random()*400 +'px';
+            ball.style.left = Math.random()*400 +'px';
+            
+            window.addEventListener('load',function (){
+              
+                    var ball1 = document.getElementById('ball');
+                    var startx = 0;
+
+                    ball1.addEventListener('touchstart', function(e){
+
+                        var touchobj = e.changedTouches[0];
+                        startx = parseInt(touchobj.clientX);
+                        e.preventDefault();
+                        //ball.style.display = 'none';
+                        var tBall = Math.random()*400 +'px';
+                        var lBall = Math.random()*400 +'px';
+                         
+                        ball.style.top = tBall;
+                        ball.style.left = lBall;
+                        
+                        
+                        wBall = wBall + 1;
+                        hBall = hBall + 1;
+                        ball.style.width = (wBall) + 'px';
+                        ball.style.height = (hBall) + 'px';
+                        
+                        
+
+                    },false)
+
+                },false)
+                
+                
+
+                
+            
+            
+            
+            
+            
+        </script>    
+        
+        
+    </body>
+    
+    
+    
+    
+</html>    

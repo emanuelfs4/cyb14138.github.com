@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html manifest="cache.manifest" type="text/cache-manifest"> 
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+    <title>Travel Convertor</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    
+    
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link rel="icon" sizes="192x192" href="./images/icon.png" />
+    <link rel="apple-touch-icon" href="./images/icon.png" />
+    <linsk rel="shortcut icon" href="./images/weeicon.png" type="image/x-icon" />
+  
+    <link rel="stylesheet" href="./cconvertor.css">
+
+    <script src="./ConvertorModel.js"></script>
+    <script src="./ConvertorView.js"></script>
+    <script src="./ConvertorController.js"></script>
+    
+    <style type="text/css"></style>
+    
+    
+    
+    </head>
+    <body>
+        <div id="StayFocusd-infobar" style="display:none;">
+    <span id="StayFocusd-infobar-msg"></span>
+    <span id="StayFocusd-infobar-links">
+        <a id="StayFocusd-infobar-never-show">hide forever</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a id="StayFocusd-infobar-hide">hide once</a>
+    </span>
+</div>
+    <header>Travel Convertor</header>
+    
+    <nav id="nav" class="closedmenu">
+        <p id="navmenu"><img src="./images/menu_icon.png" alt="Show" width="42" height="26"></p>        
+        <div id="navelem" style="display: none;">
+            <p class="navMenuItem" id="currencyMenu">Currency</p>
+
+            <p class="navMenuItem" id="navMenuAbout">About</p>
+
+        </div>
+    </nav>
+    
+    <section id="mainsection" class="closedmenu">
+        <div class="top"> 
+            <input dir= "rtl" id="displayValue" READONLY>
+            <input id="displayCurrency" READONLY>
+        </div >
+
+        <div class="keys">
+            <div id="div1"> 
+                <button id="buttonSeven"> 7 </button>
+                <button id="buttonEight"> 8 </button>
+                <button id="buttonNine"> 9 </button>
+            </div>
+            <div id="div2">
+                <button id="buttonFour"> 4 </button>
+                <button id="buttonFive"> 5 </button>
+                <button id="buttonSix"> 6 </button>
+            </div>
+            <div id="div3">
+                <button id="buttonThree"> 1 </button>
+                <button id="buttonTwo"> 2 </button>
+                <button id="buttonOne"> 3 </button>
+            </div>
+            <div id="div4">
+                <button id="buttonClear"> C </button>
+                <button id="buttonZero"> 0 </button>
+                <button id="buttonEval"> = </button>
+            </div>
+        </div>
+            
+      
+    </section>
+    
+    <section class="popup" id="popupAbout">
+        <div class="popupcontent">
+            <h1 style="text-align:center" >About </h1>
+            <p>Currency Convertor</p>
+            <p>First coursework of the class </p>
+            <p>CS371 - Mobile Apps Development</p> 
+            <p>given by the professor Mark Dunlop </p>
+            <p>&copy; University of Strathclyde</p>
+            <p> Emanuel Felipe </p>
+            <p>emanuelfs4@gmail.com</p>
+        </div>
+    </section>
+
+
+    <section class="popup" id="popupCurrency">
+
+        <div class="popupContCurrency">
+            
+            <h1 id="header_popup_currency">Currency Selector</h1>    
+
+            <div id="box_homeCurrency">      
+                
+                <label id='home_currency'>Home Currency : </label>
+                
+                <select id="homeCurrency" onclick="DropDown('homeCurrency')"></select>
+            </div>
+               
+            <div id="box_visitorCurrency">   
+                
+                <label id='visitor_currency'>Visitor Currency : </label>
+                
+                <select id="visitorCurrency" onclick="DropDown('visitorCurrency')"></select>    
+            </div>
+
+            <div id="box_bank_cut">
+
+                <label id='bank_cut'>Bank Cut : </label>
+
+                <select id="bankCut" onclick="DropDown('bankCut')"> 
+                    <option id="0" value="0.00">  0% </option>
+                    <option id="2" value="0.02">  2% </option>
+                    <option id="4" value="0.04">  4% </option>
+                    <option id="6" value="0.06">  6% </option>
+                </select>
+            </div>
+
+            <button id="ok_button" > OK </button>
+        <div>    
+    </section>     
+      
+    <footer>&copy; Emanuel Felipe</footer>
+    
+    <script language="JavaScript" type="text/javascript" src="./fillButtons.js"> </script>
+    <script language="JavaScript" type="text/javascript" src="./dropDown.js"> </script>
+    <script language="JavaScript" type="text/javascript" src="./cconvertor.js"> </script>
+    
+</body>
+
+</html>

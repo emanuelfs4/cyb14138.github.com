@@ -1,0 +1,308 @@
+*{
+    margin: 0;
+    
+}
+
+/*  ----- HTML, BODY, HEADER, FOOTER ----- */
+html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden ;
+    
+}
+html,body {
+    heigth: 100%;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 4vh;
+    
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -ms-text-size-adjust: none;
+    font-size-adjust: none;
+    user-select: none;
+    overflow: hidden ;
+    background-color: gray;
+}
+
+body{
+    height: 100% !important;
+    
+}
+
+header {
+    
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:0.2em; 
+    font-size: 1.3rem;
+    height: 1.1em;
+    
+    overflow: hidden;
+}
+
+
+/*  ----- MENU, OPEN, CLOSED, POPUPS ---- */
+nav {
+    background-color: #828282 ;
+    padding: 0.3rem;
+    width:25%;
+    float:left;
+    font-size: 0.8rem;
+    height: calc(100% - 4.1rem);
+    
+}
+
+nav.closedmenu{
+    
+    width:calc(100% - 87%);
+        
+}
+section.closedmenu{
+    margin-left: 40px;
+}
+
+p.navMenuItem{
+    margin: 15% 4% 1% -1%;
+    padding: 0.5rem;
+    border-radius:13px;
+    font-weight:bold;
+    text-align: center;
+    font-size: 70%;
+    color: white;
+    
+    background: darkblue;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+section{
+    margin-left: calc(20% + 10px);
+    padding: 0.3rem;
+    font-size: 1rem;
+    min-height: calc(100% - 4.1rem);
+    height: 100%;
+    overflow:hidden;
+    background: #999999;
+}
+
+section.popup {
+    display: none;
+    width:100vw;
+    height:100vh;
+    background:rgba(105,100,100,0.8);
+    position: absolute;
+    top:0px;
+    left:0px;
+    margin-left:0px;
+}
+
+.popupcontent p{
+    font-size: 70%;
+     word-wrap: break-word;
+    
+    
+}
+.popupcontent, .popupContCurrency{
+    white-space: nowrap;
+    padding: 5vmin;
+    position: relative;
+    top: 2%;
+    left: 3%;
+    width: 80vmin;
+    background:rgba(200,200,200,0.90);
+    border: solid;
+    border-radius:13px;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.5);
+    z-index:2;
+    
+}
+
+
+#header_popup_currency{
+    text-align: center;
+    font-size: 30px
+}
+
+
+label{
+    color: black;
+    font-size: 20px !important;
+    white-space: nowrap;
+}
+
+#popupAbout P{
+    padding: 0.5rem;
+}
+
+#popupCurrency P{
+    padding: 0.5rem;
+}
+
+#popupCurrency {
+    text-align: center;
+    overflow: scroll;
+}
+
+#popupCurrency div{
+    padding: 10px;
+    
+}
+
+#popupCurrency label{
+    font-size: 15px;
+    
+}
+
+#popupCurrency select{
+    font-size: 12px;
+    position: relative;
+    left: 5%;
+    text-indent: 10px;
+    width: 76px;
+    height: 25px;
+    
+}
+
+#popupCurrency button, select{
+    border-radius:13px;
+    font-family:arial;
+    font-weight:bold;
+    text-align: center;
+    width: 35%;
+    height: 10%;
+    font-size: 100%;
+    color: white;
+    background: darkblue;
+    margin: 1% 2% 1% -1%;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.5);
+    
+}
+
+/*--- DISPLAYS --- */
+.top{
+    text-align: center;
+    white-space: nowrap;
+}
+
+.top input{
+    display:table-cell;
+    position:relative;
+    margin-bottom: 2%;
+    height: 24%;
+    width: 100%;
+    display: inline-block;
+    
+    background-color: blue ;
+    letter-spacing: 1px;
+    
+    border: none;
+    font-size: 50%;
+    vertical-align:middle;
+    
+    z-index:1;
+    
+}
+
+#displayCurrency{
+    position: relative;
+    width: 20%;
+    
+    font-size: 75%;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.6);
+    background: darkblue;
+    
+}
+
+#displayValue{
+  
+    
+    padding-left: 2.5%;
+    padding-right: 1%;
+    width: 68%;
+    font-size: 250%;
+    text-align: right;
+    
+    
+    color: white;
+    border-radius: 10px;
+    box-shadow: inset 5px 5px rgba(0, 0, 0, 0.5);
+    overflow: scroll;
+    
+}
+
+/*--- KEYS ---- */
+
+.keys{
+    
+    
+    text-align: center;
+    
+    float: none;
+    display: block;
+    top: 1%;
+    height: 100%;
+    width: 100%;
+    left: -2%;
+    white-space: nowrap;
+    
+}
+
+.keys button{
+    
+    position: relative;
+    
+    width: 31%;
+    
+    color:#ffffff;
+    font-family:arial;
+    font-weight:bold;
+    text-align: center;
+    
+    
+    left: 1%;
+    
+    
+    font-size: 150%;
+    color: white;
+    
+    background: darkblue;
+    
+    margin: 4% 2% 1% -2%;
+    
+    border-radius:13px;
+    box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.5);
+   
+  
+    
+}
+
+button:active {
+	position:relative;
+	top:2px;
+}
+
+
+
+#buttonEval{
+    background-color: blue;
+}
+
+#buttonClear{
+    background-color: orange;
+}
+
+
+

@@ -1,0 +1,161 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12-Feb-2015, 19:00:55
+    Author     : Emanuel
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    background: gray;
+}
+
+
+html, body{
+    text-align: center;
+    height: 100%;
+    
+}
+
+header, footer{
+    
+    background-color: black;
+    color: white;
+
+}
+
+
+header{
+    
+    font-size: 2rem;
+    font-weight: bold;
+    
+}
+
+footer{
+    font-size: 0.8rem;
+
+    text-align: center;
+    
+    font-size: 20px;
+    
+    padding: 2px ;
+ 
+    overflow: hidden;
+    
+    margin-top: 8%;
+
+}
+
+
+main{
+    height: calc(10% - 4rem);
+    overflow: auto;
+    
+}
+
+
+body{
+   overflow: hidden;
+   vertical-align:middle;
+}
+
+
+
+.fundo {
+    position: relative;
+    top: 10px;
+}
+
+
+.fundo > div{
+    height: 146px;
+    width: 262px;
+    background: white;
+    margin: 0 auto 0 auto;
+    
+}
+
+
+.top{
+    text-align: center;
+    
+}
+
+.top input{
+    
+    display: inline-block;
+    background-color: blue ;
+    letter-spacing: 1px;
+    
+    height: 80px;
+    
+    position:relative;
+    bottom: 141px;
+    
+    border: none;
+    
+    font-size: 50px;
+    vertical-align:middle;
+    
+}
+
+#displayValue{
+    
+    width: 200px;
+    text-align: right;
+    color: lightgray;
+   
+}
+
+#displayCurrency{
+    
+    position: relative;
+    
+    margin-left: -4px;
+    width: 54px;
+    text-align: center;
+    color: gray;
+    font-size: 14px;
+}
+
+.keys{
+    
+    position: relative;
+    text-align: center;
+    width: 260px;
+}
+
+.keys button{
+    
+    position: relative;
+    bottom: 202px;
+    
+    left: 3px;
+    height: 84px;
+    width: 84px;
+    
+    
+    font-size: 30px;
+    color:white;
+    
+    text-align: center;
+    
+    
+    background: darkblue;
+    
+    margin: 0px 2px 3px -4px;
+    
+    user-select: none;
+}
+
+
+button:focus {
+    outline:0 !important;
+}
+
+

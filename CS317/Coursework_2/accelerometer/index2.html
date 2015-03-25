@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Accelerometer </title>
+        
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+     
+        <style>
+            
+            #base{
+                position: relative;
+                background-color: orange;
+            }
+            #ball{
+                position: relative;
+                background-color: red;
+                
+            }
+            
+            #box1{
+                position: relative;
+                width: 50px; 
+                height: 50px;
+                border: solid;
+            }
+        </style>    
+        
+        
+    </head>
+    
+    <body>
+        
+        <canvas id="myCanvas" width="300" height="400" style="border: dashed;">
+            <rect  width="10" height="10" id="paddle" />
+        </canvas>    
+        
+      
+            
+                <div id="base"> </div>
+                <div id ="ball"> </div>
+
+
+
+        
+    <script type="text/javascript">
+       var xBase = 0, vxBase = 0, axBase = 0, yBase = 200, vyBase = 0, ayBase = 0,
+               wBase = 80, hBase = 15;
+               xBall = 155, yBall = 330, vxBall = 0, vyBall = 0,axBall = 0, ayBall = 0,
+                       wBall = 15, hBall = 15;
+               
+        var base = document.getElementById("base");
+        var ball = document.getElementById("ball");   
+        
+        var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+        
+        var heigth = (window.innerHeigth > 0) ? window.innerHeigth : screen.height;
+        
+        
+   /*
+       base.style.width = wBase  + "px";
+       base.style.height = hBase  + "px";
+       base.style.left = xBase  + "px";
+       base.style.top = yBase  + "px";
+      
+       
+       
+       
+       
+       ball.style.width = wBall  + "px";
+       ball.style.height = hBall  + "px";
+       ball.style.left = xBall + "px";
+       ball.style.top = yBall + "px";
+       
+       */
+          
+       var paddle = document.getElementById("paddle"),
+               canvas = document.getElementById("myCanvas"),
+               canvasX = 0,
+               canvasRunning = true,
+               intervalObject;
+       /*
+       canvas.width = width;
+       canvas.height = heigth;
+       */
+       canvas.width = 300;
+       canvas.height = 420;
+      
+       if(window.DeviceMotionEvent !== undefined){
+
+                window.ondevicemotion = function (e){
+                    axBase = event.accelerationIncludingGravity.x * -10;
+                    
+                    //axBall = event.accelerationIncludingGravity.x *5;
+                    //ayBall = event.accelerationIncludingGravity.y*5;
+                    
+                };
+                
+                window.addEventListener('load', function(){
+                    
+                    var box1 = document.getElementById('ball');
+                    var startx = 0;
+                    /*
+                    box1.addEventListener('touchstart', function(e){
+                        var touchobj = e.changedTouches[0];
+                        startx = parseInt(touchobj.clientX);
+                        
+                        e.preventDefault();
+                        
+                        document.getElementById('ballX').innerHTML = startx;
+                        
+                        
+                        
+                    }, false)
+                    */
+                    axBall = 45;
+                    ayBall = -45;
+                }, false);
+              
+                canvasPaint = function(){
+                    
+                    var ctx = canvas.getContext("2d");
+                    
+                    ctx.clearRect(0 , 0, canvas.width, canvas.height);
+                    
+                    ctx.beginPath();
+                    
+                    ctx.fillStyle = "red";
+                    
+                    ctx.fillRect(parseInt(xBase*0.98 + vxBase / 50) ,200,wBase,hBase);
+                    
+                    
+                    ctx.fillStyle = "green";
+                    
+                    ctx.fillRect(parseInt(xBall + vxBall / 50) ,parseInt(yBall + vyBall / 50),wBall,hBall);
+                    
+                    ctx.fill();
+                    
+                    ctx.stroke();
+                    
+                
+                    
+                };
+
+
+                setInterval( function() {
+                    var landscapeOrientation = window.innerWidth / window.innerHeight > 1;
+                    
+                    
+                    if(landscapeOrientation){
+                        vxBall = vxBall + ayBall;
+                        vyBall = vyBall + axBall;
+                        
+                    }else {
+                        //vy = vy - ay;
+                        vxBase = vxBase + axBase;
+
+                        vxBall = vxBall + axBall;
+                        vyBall = vyBall + ayBall;
+                    }
+                    
+                    vxBase = vxBase * 0.90;
+                    
+                    vxBall = vxBall * 0.85;
+                    vyBall = vyBall * 0.85;
+                    
+                    xBase = parseInt(xBase + vxBase / 50);
+                    yBase = parseInt(yBase + vyBase / 50);
+                    
+                    xBall = parseInt(xBall + vxBall / 50);
+                    yBall = parseInt(yBall + vyBall / 50);
+                    
+                    canvasPaint();
+                    boundingBoxCheck();
+                    
+                    base.style.left = xBase + "px";
+                    base.style.top = yBase + "px";
+                    
+                    ball.style.left = xBall + "px";
+                    ball.style.top = yBall + "px";
+
+                },20);
+                
+                
+       }
+
+         function boundingBoxCheck(){
+            /* --- Base --- */
+            if (xBase < 0) {
+                //xBall = 0; 
+                vxBase = -vxBase*1;
+                
+            }
+            
+            if (xBase >= canvas.width - wBase) { 
+                
+                vxBase = -vxBase*1;
+            }
+          
+            
+/*
+        
+                document.getElementById("ballX").innerHTML = xBall;
+                document.getElementById("ballY").innerHTML = yBall;
+                
+                document.getElementById("ballvX").innerHTML = vxBall;
+                document.getElementById("ballvY").innerHTML = vyBall;
+                
+                document.getElementById("ballaX").innerHTML = axBall;
+                document.getElementById("ballaY").innerHTML = ayBall;
+                
+                document.getElementById("baseX").innerHTML = xBase;
+                document.getElementById("baseY").innerHTML = yBase;
+                
+                document.getElementById("basevX").innerHTML = vxBase;
+                document.getElementById("basevY").innerHTML = vyBase;
+                
+                document.getElementById("baseaX").innerHTML = axBase;
+                document.getElementById("baseaY").innerHTML = ayBase;
+                
+                
+*/          
+            //if(xBase + wBase > xBall && xBase < xBall + wBall && yBall + hBall  + hBase > yBase  && yBall <= yBase){
+            if( xBall >= xBase  && 
+                xBall + wBall <= xBase + wBase &&
+                yBall +hBase >= yBase){
+                
+                vyBall = -vyBall;
+                vxBall = vxBall;
+                
+                ayBall = -ayBall;
+                   //document.getElementById("baseaY").innerHTML = "1297831283";
+            }else{
+                 //document.getElementById("baseaY").innerHTML = "HU3HU3";
+            }
+            
+            
+            
+            /* --- Ball --- */
+            
+            if (xBall < 0) {
+               // xBall = 0;
+               axBall = -axBall;
+               vxBall = -vxBall; 
+            }
+            
+            if (yBall < 0) {
+               // yBall = 0; 
+               ayBall = -ayBall;
+                vyBall = -vyBall; 
+            }
+            
+            if (xBall > canvas.width - wBall) { 
+                axBall = -axBall;
+                vxBall = -vxBall;
+            }
+            
+            if (yBall > canvas.height - hBall) { 
+                ayBall = -ayBall;
+                vyBall = -vyBall; 
+            }
+            
+            
+
+        }
+
+
+    </script>    
+    </body>    
+        
+    
+</html>    

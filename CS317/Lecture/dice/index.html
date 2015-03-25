@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Dice do Manel</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="icon" sizes="192x192" href="images/icon.png" />
+        <link rel="apple-touch-icon" href="images/icon.png" />
+        <link rel="shortcut icon" href="images/weeicon.png" type="image/x-icon" />
+
+        <link rel="stylesheet" type="text/css" href="dice.css"/>
+
+    </head>
+    
+    
+    <body>
+        <header class="myheader"> Dice do Manel </header>
+        <div id="imageDiv1">
+           <img src="images/1.png" alt="1" height="200" width="200" id="diceImg1">
+           
+        </div>    
+        <div id="imageDiv2">
+            <img src="images/1.png" alt="1" height="200" width="200" id="diceImg2">
+            
+        </div>
+        <div>
+            <button id="randomButton"> Randomize </button>
+            
+        </div>    
+        
+        <footer> &copy; University of Strathclyde - 2015 </footer>
+<!--
+        <script>
+            function clicked(){
+                
+                var diceModel = new DiceModel();
+                var diceView = new DiceView();
+                diceModel.randomise();
+                
+                diceView.showDiceFace(diceModel.getCurrentFace());
+            
+            }
+            
+        </script>    
+        -->
+        <script src="diceModel.js"></script>
+        <script src="diceView.js"></script>
+        <script src="diceController.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,136 @@
+html, body{
+	background-color: lightblue;
+	text-align:  center;
+}
+
+table{
+	margin-left: auto;
+	margin-right: auto;
+	border-style: double;
+	border: 2px solid darkblue;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+p{
+	text-align: left;
+}
+
+input[type="text"]{
+	font-size: 15px;
+
+}
+.submit_bt{
+	margin-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.header_footer{
+	text-align: center;	
+	background-color: darkblue;
+	color: lightblue;
+	padding-top: 0.8em;
+	padding-bottom: 0.8em;
+	margin-right: 0.8em;
+	margin-left: 0.8em;
+	font-style: italic;
+	font-family: Arial;
+	font-size: 0.8em;
+}
+
+.footer{
+	text-align: center;
+	color: darkblue;
+	font-style: italic;
+}
+
+.rates{
+	font-weight: bold;
+}
+
+/*
+.contact{
+	font-weight: bold;
+}
+*/
+#table_1 th{
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+#table_1 .values{
+
+	table-layout: fixed;
+	width: 5.5em;
+	border: 1px solid darkblue;
+
+}
+
+
+#table_2{
+	width: 25%;
+}
+#table_2 td{
+	border: 1px solid darkblue;
+}
+
+#table_2 td:first-child{
+	width: 31%;
+	padding: 8px; 
+}
+
+#table_2 td:last-child{
+	width: 70%;
+	text-align: left;
+}
+
+.input_text{
+	margin-left: 3px;
+	width: 90%;
+}
+
+
+#input_comment{
+	margin-left: 3px;
+	width: 95%;
+	height: 5em;
+	line-height: 15px;
+}
+
+#menu{
+	width: 98.5%;
+	height: 20%;
+	margin-left: 10px;
+	font-size: 20px;
+	font-family: Tahoma;
+	font-weight: bold;
+	text-align: center;
+
+	border-radius: 8px; 
+	background-color: lightblue;
+	box-shadow: 1px 3px 10px 5px darkblue;
+	color: darkblue;
+
+
+}
+
+#menu ul{
+	height: auto;
+	padding: 8px 0px;
+	margin: 0px;
+}
+
+#menu a{
+	text-decoration: none;
+}
+
+#menu li{
+	display: inline;
+	padding: 20px;
+}
+
+#menu a:hover{
+	color: #F30;
+}
+
+

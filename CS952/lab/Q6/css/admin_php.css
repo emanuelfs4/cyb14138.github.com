@@ -1,0 +1,134 @@
+
+
+
+h1,h2,h3{
+
+	text-align: center;
+	font-style: italic;
+
+}
+
+h1{
+	background-color: gray;
+	border-radius: 8px;
+	width: 98.5%;
+	margin-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: -13px; 
+}
+p{
+	text-align: center;
+	font-style: italic;
+}
+.main{
+	margin-bottom: 0px;
+}
+
+
+.div_bt{
+	margin-top: 10px;
+	text-align: center;	
+}
+
+
+table, td {
+	border: 2px solid black;
+	border-style:double;
+	//border-style:groove;
+
+}
+
+table{
+	border-collapse: collapse;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+td{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+th{
+	background-color: darkgray;
+	border: 2px solid;
+	font-size: 17px;
+	font-weight: bold;
+	font-style: italic;
+	padding-left: 5px;
+	padding-right: 5px;
+
+}
+
+
+th:first-child{
+	background-color: black;
+	color: white;
+	border-right: 1px solid;
+
+}
+
+tr > td:first-child{
+	text-align: right;
+	background-color: darkgray;
+	font-weight: bold;
+	font-style: italic;
+
+}
+
+tr > td:last-child{
+	font-style: italic;
+}
+
+#signature, .bottom_line {
+	position: relative;
+	bottom: -20%;
+}
+
+#signature{
+	font-size: 12px; 
+
+}
+
+
+#menu{
+	width: 98.5%;
+	height: 8%;
+	margin-left: 10px;
+	font-size: 20px;
+	font-family: Tahoma;
+	font-weight: bold;
+	text-align: center;
+
+	border-radius: 8px; 
+	background-color: lightgray;
+	color: darkblue;
+
+
+}
+
+#menu ul{
+	height: auto;
+	padding: 8px 0px;
+	margin: 0px;
+}
+
+#menu a{
+	text-decoration: none;
+}
+
+#menu li{
+	display: inline;
+	padding: 20px;
+}
+
+#menu a:hover{
+	color: #F30;
+}
+
+
+
+

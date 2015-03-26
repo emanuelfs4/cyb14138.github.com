@@ -54,7 +54,7 @@ echo "<tr> <td> Priority Cases </td> <td>" . $_POST['priority_case'] . "</td> </
 
 
 $to = "emanuelfs4@gmail.com";
-$subject = "Parking Permit Registration";
+$subject = "Parking Permit Registration - Test";
 $message = "";
 
 $message .= "Name: ". $_POST['name']. "\n";
@@ -63,7 +63,7 @@ $message .= "Vehicle Type: " . $_POST['vehicle_type']. "\n";
 $message .= "Days: " . $days_out ."\n";
 $message .= "Priority Cases: " . $_POST['priority_case'] . "\n";
 
-mail ($to , $subject ,$message );
+mail ($to , $subject, $message);
 
 ?>
 </p>

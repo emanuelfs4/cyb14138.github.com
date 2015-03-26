@@ -22,22 +22,34 @@ function check(){
 
 //Name
 	if(name.length == 0){
-		str = str + "You must enter a valid Name.\n";
+		str = str + "* You must enter a valid Name.\n";
 
 	}
 
+
+	
+
+	//alert((/[A-Z]{2}[0-9]{2}\s[A-Z]{3}/.test(reg)));
+
+
 //Registration
-	if(reg.length == 0){
-		str = str + "You must enter a valid Vehicle Registration.\n"
+
+	if(reg.length == 0) {
+
+		str = str + "* You must enter a valid Vehicle Registration.\n";
+	}else{
+		if(!(/[A-Z]{2}[0-9]{2}\s[A-Z]{3}/.test(reg))){
+			str = str + "* You must enter a valid Vehicle Registration.\n";
+		}
 	}
 
 
 //Applicatioon Date
 	if(app_date[0].value.length == 0){
-		str = str + "You must enter a valid Application Date.\n"
+		str = str + "* You must enter a valid Application Date.\n"
 	}else{
 		if(checkDate(app_date[0].value) == null ){
-			str = str + "You must enter a valid Application Date.\n";
+			str = str + "* You must enter a valid Application Date.\n";
 		}
 	}
 
@@ -46,19 +58,19 @@ function check(){
 		if(checkDate(app_date[0].value.length) != null ){
 			permit_date[0].value = app_date[0].value;
 		}else{
-			str = str + "You must enter a valid Permit Start Date.\n";
+			str = str + "* You must enter a valid Permit Start Date.\n";
 		}
 
 	}else{
 		if(checkDate(permit_date[0].value) == null){
 			alert(checkDate(permit_date[0].value));
-			str = str + "You must enter a valid Permit Start Date.\n";
+			str = str + "* You must enter a valid Permit Start Date.\n";
 		}
 
 	}
 
 	if(checkDate(permit_date[0].value) < checkDate(app_date[0].value)){
-		str = str + "The Permit Start Date must be after the Application Date.\n";
+		str = str + "* The Permit Start Date must be after the Application Date.\n";
 	}
 
 //Type of vehicle
@@ -71,7 +83,7 @@ function check(){
 
 	}
 	if(!checkedType){
-		str = str + "You must select a Type.\n"
+		str = str + "* You must select a Type.\n"
 	}
 
 //Days Selected
@@ -85,13 +97,13 @@ function check(){
 	}
 
 	if(!checkedDays){
-		str = str + "You must select at least one Day.\n"
+		str = str + "* You must select at least one Day.\n"
 	}
 
 //Priority Case
 	if(priority.options[priority.selectedIndex].text == "-"){
 
-		str = str + "You must select a valid Priority Case.";
+		str = str + "* You must select a valid Priority Case.";
 
 	}	
 	
@@ -107,6 +119,7 @@ function check(){
 	}
 
 }
+
 
 
 

@@ -7,133 +7,100 @@
 
 <body>
 
-<h1> Administrator Interface</h1>
-<p>
+    <h1> Administrator Interface</h1>
+    <p>
 
-<div id="menu">
-        <ul id="top">
-          <li> <a href="./admin_show.php"> All Submissions </a></li>
-          <li> <a href="./delete_form.php"> Delete </a></li>
-          <li> <a href="./print_form.php"> Print </a></li>
-        </ul>  
-</div>
+        <div id="menu">
+            <ul id="top">
+              <li> <a href="./admin_show.php"> All Submissions </a></li>
+              <li> <a href="./delete_form.php"> Delete </a></li>
+              <li> <a href="./print_form.php"> Print </a></li>
+          </ul>  
+      </div>
 
-<h2> Delete </h2>
+      <form method="post" action="https://devweb2014.cis.strath.ac.uk/~cyb14138/CS952/lab/Q6/admin/delete.php">
+        <div id="all_sub">
 
-<form method="post" action="https://devweb2014.cis.strath.ac.uk/~cyb14138/CS952/lab/Q6/admin/delete.php">
+            <table id="par_table_all">
 
-    <table id="table_delete">
-                <tr>
-                  <td>
-                    <label id="lb_name">Name <label> 
-                  </td>
-
-                  <td>
-                    <input class="input_text" name="name" type="text"> </input>
-                  </td>    
-                </tr>
-
-                <tr>
-                  <td>
-                    <label id="lb_vehicle" > Vehicle Registration </label>
-                  </td>
-                  
-                  <td> 
-                    <input class="input_text" name="vehicle" type="text"> </input>
-                  </td>  
-                </tr>
-
-                <tr>
-                  <td>
-                    <label id="lb_application_date"> Application Date </label>
-                  </td>
-
-                  <td>
-                    <input class="input_text" name="application_date" type="text" placeholder="Year-Month-Day"> </input>  
-                  </td>
-                </tr>
-
-                 <tr>
-                  <td>
-                    <label id="lb_permit_date"> Permit Start Date</label>
-                  </td>
-
-                  <td>
-                    <input class="input_text" name="permit_date" type="text" placeholder="Year-Month-Day"> </input>  
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <label id="lb_vehicle_type"> Vehicle Type </label>
-                  </td>
-
-                  <td>
-                    <input name="vehicle_type" type="radio" value="Car"> Car </input>
-                    <input name="vehicle_type" type="radio" value="Van"> Van </input>
-                    <input name="vehicle_type" type="radio" value="Bike"> Bike </input>                           
-                  </td>  
-                </tr>  
-
-                <tr>
-                  <td>
-                    <label id="lb_days" > Days </label>
-                  </td>
-                  
-                  <td> 
-
-                    <input name="days" type="radio" value="Monday"> M </input>
-                    <input name="days" type="radio" value="Tuesday"> T </input>
-                    <input name="days" type="radio" value="Wednesday"> W </input>
-                    <input name="days" type="radio" value="Thursday"> T </input>
-                    <input name="days" type="radio" value="Friday"> F </input>
-                  </td>
-                </tr>      
-
-                <tr>
-                  <td>
-                    <label id="lb_priority_case"> Priority Cases </label>
-                  </td>
-
-                  <td>
-                    <select id="select_priority" name="priority_case"> 
-                      <option selected="">-</option>
-                      <option value="Child in Nursery"> Child in nursery </option>
-                      <option value="Blue Badge Holder"> Blue badge holder </option>
-                      <option value="Work Van"> Work van </option>
-                      <option value="Professor"> Professor </option>
-                    </select>   
-                  </td>
-                </tr>
+                <?php
+                echo "<h2> Delete </h2> ";
+                echo "<tr>";
+                echo "<th> Select </th> ";
+                echo "<th> Name </th> ";
+                echo "<th> Vehicle Registration </th> ";
+                echo "<th> Application Date</th> ";
+                echo "<th> Permit Date </th> ";
+                echo "<th> Vehicle Type </th> ";
+                echo "<th> Days </th> ";
+                echo "<th> Priority Cases </th> ";
+                echo "</tr>";
 
 
-                
-                   
-                <tr>
-                  <td>
-                  </td>
+                $username = "cyb14138";
+                $password = "atestedi";
+                $database = "cyb14138";
+                $servername = "devweb2014.cis.strath.ac.uk";
 
-                  <td>
-                    <!-- <button type="Submit" id="bt_submit" value="Submit"> Submit </input> -->
-                    <button type="Submit" id="bt_submit" value="Submit"> Delete </input>
-                  </td>
-                </tr>  
-           </table> 
+                if (!($conn = mysqli_connect($servername, $username, $password))) { 
+                    die("Problem connecting to database server"); 
+                }
 
-</form>
+                if (!mysqli_select_db($conn, $database)){
+                    die("Unable to select database"); 
+                }
 
-<form action="../admin/admin_show.php">
-  <div class="div_bt">
 
-    <button id="bt_back"type="submit" value="Back"> Back </button>
+                $sql = 'SELECT * FROM lab_parking_q6 ORDER BY name';
 
-  </div>  
+                if (!($result = mysqli_query($conn, $sql))){
+                    die("Could not execute query!"); 
+                }
 
-</form>
+                if(mysqli_num_rows($result) == 0){
+                    echo "<p> No rows found </p> ";
+                }else{
 
-<hr class="bottom_line"> 
+                    echo "<tr>";
+                    echo "<br>";
+                    while($r=mysqli_fetch_assoc($result)){
+                        echo "<td><input type='radio' name='radio_table' value='".$r['vehicle_reg']."/".$r['days']."'></td>";
+                        echo "<td> " . $r['name'] ." </td>";
+                        echo "<td> " . $r['vehicle_reg'] ." </td>";
+                        echo "<td> " . $r['application_date'] ." </td>";
+                        echo "<td> " . $r['permit_date'] ." </td>";
+                        echo "<td> " . $r['vehicle_type'] ." </td>";
+                        echo "<td> " . $r['days'] ." </td>";
+                        echo "<td> " . $r['priority_cases'] ." </td>";
+                        echo "</tr>";
+                    }
 
-<p id="signature"> Version 1.0 - <?php echo date('d/m/Y'); ?> - (C) University of Strathclyde / Emanuel Felipe 2015</p>
+                }
+                mysqli_close($conn);
+                ?>
+
+            </table>
+
+        </div>
+        <div class="div_bt">
+            <button type="Submit" id="bt_submit" value="Submit"> Delete </input>
+            </div>
+
+
+        </form>
+
+        <form action="../admin/admin_show.php">
+          <div class="div_bt">
+
+            <button id="bt_back"type="submit" value="Back"> Back </button>
+
+        </div>  
+
+    </form>
+
+    <hr class="bottom_line"> 
+
+    <p id="signature"> Version 1.0 - <?php echo date('d/m/Y'); ?> - (C) University of Strathclyde / Emanuel Felipe 2015</p>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Delete </title>
+    <title> Print </title>
     <link type="text/css" rel="stylesheet" href="../css/admin_php.css">
 </head>
 

@@ -109,6 +109,15 @@ function check(){
 }
 
 
+function values(){
+	var values = document.getElementsByName('radio_table');
+	for(var i = 0; i < values.length ; i++){
+		if(values[i].checked){
+			document.getElementById('bt_submit').type = "Submit";
+		}
+	}
+	
+}
 
 function checkDate(date){
 		var timestamp=Date.parse(date);

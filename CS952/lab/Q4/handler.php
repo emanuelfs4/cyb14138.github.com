@@ -125,7 +125,7 @@ if(!empty($_POST['name']) && !empty($_POST['vehicle']) && !empty($_POST['vehicle
                     $sql .= "'" . $_POST['name'] . "', ";
                 }
 
-                if(preg_match('/^[A-Z]{2}[0-9]{2}[A-Z]{3}$/', $_POST['vehicle'] ) ){
+                if(preg_match('^[A-Z]{2}[0-9]{2}\s{1}[A-Z]{3}$', $_POST['vehicle'] ) ){
                     $sql .= "'" . $_POST['vehicle'] . "', ";
                 }else{
                     echo "Insert a valid plate number.";

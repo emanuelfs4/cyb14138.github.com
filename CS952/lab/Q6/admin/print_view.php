@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title> Delete </title>
+    <title> Print </title>
     <link type="text/css" rel="stylesheet" href="../css/print_view.css">
 </head>
 
@@ -32,98 +32,11 @@ if (!mysqli_select_db($conn, $database)){
 }
 
 
-$sql = "";
 
-if(!empty($_POST['name'])){ 
-
-    $sql = $sql . " name = '" . $_POST['name'] . "'";
-
-}
-
-if( (!empty($_POST['name']) && !empty($_POST['vehicle'])) || (!empty($_POST['name']) && !empty($_POST['application_date']))
-    || (!empty($_POST['name']) && !empty($_POST['permit_date'])) || (!empty($_POST['name']) && !empty($_POST['vehicle_type'])) 
-    || (!empty($_POST['name']) && !empty($_POST['days'])) || (!empty($_POST['name']) && $_POST['priority_case'] != '-') ){
-    $sql = $sql . " AND " ;    
-}
-
-if(!empty($_POST['vehicle'])){
-    $sql = $sql . " vehicle_reg = '" . $_POST['vehicle'] . "'" ;
-}
+list($reg, $day) = explode('/', $_POST['radio_table']);
 
 
-if( (!empty($_POST['vehicle']) && !empty($_POST['application_date'])) || (!empty($_POST['vehicle']) && !empty($_POST['permit_date'])) 
-        || (!empty($_POST['vehicle']) && !empty($_POST['vehicle_type'])) || (!empty($_POST['vehicle']) && !empty($_POST['days'])) 
-        || (!empty($_POST['vehicle']) && $_POST['priority_case'] != '-') ){
-    $sql = $sql . " AND " ;    
-}
-
-if(!empty($_POST['application_date'])){
-
-    $sql = $sql . " application_date = '" . $_POST['application_date'] . "'" ;
-}
-
-if( (!empty($_POST['application_date']) && !empty($_POST['permit_date'])) || (!empty($_POST['application_date']) && !empty($_POST['vehicle_type'])) 
-        || (!empty($_POST['application_date']) && !empty($_POST['days'])) || (!empty($_POST['application_date']) && $_POST['priority_case'] != '-') ){
-    $sql = $sql . " AND " ;    
-}
-
-
-if(!empty($_POST['permit_date'])){
-
-    $sql = $sql . " permit_date = '" . $_POST['permit_date'] . "'" ;
-}
-
-if( (!empty($_POST['permit_date']) && !empty($_POST['vehicle_type'])) || (!empty($_POST['permit_date']) && !empty($_POST['days'])) 
-    || (!empty($_POST['permit_date']) && $_POST['priority_case'] != '-') ){
-    $sql = $sql . " AND " ;    
-}
-
-
-if(!empty($_POST['vehicle_type'])){
-
-    $sql = $sql . " vehicle_type = '" . $_POST['vehicle_type'] . "'" ;
-}
-
-if( (!empty($_POST['vehicle_type']) && !empty($_POST['days'])) || (!empty($_POST['vehicle_type']) && $_POST['priority_case'] != '-')){
-    $sql = $sql . " AND " ;    
-}
-
-
-if(!empty($_POST['days'])){
-
-    $sql = $sql . " days = '" . $_POST['days'] . "'" ;
-
-}
-
-
-if(!empty($_POST['days']) && $_POST['priority_case'] != '-'){
-    $sql = $sql . " AND " ;    
-}
-
-
-if($_POST['priority_case'] != '-'){
-
-    $sql = $sql . " priority_cases = '" . $_POST['priority_case'] . "'" ;
-
-}
-
-/*
-echo "<tr>";
-echo "<th> Name </th> ";
-echo "<th> Vehicle Registration </th> ";
-echo "<th> Application Date</th> ";
-echo "<th> Permit Date </th> ";
-echo "<th> Vehicle Type </th> ";
-echo "<th> Days </th> ";
-echo "<th> Priority Cases </th> ";
-echo "</tr>";
-*/
-
-
-
-$sql_select = "SELECT * FROM lab_parking_q6 WHERE ";
-
-$sql_select = $sql_select . $sql; 
+$sql_select = "SELECT * FROM lab_parking_q6 WHERE vehicle_reg ='" . $reg . "' AND days='" . $day . "'";
 
 if (!($result = mysqli_query($conn, $sql_select))){
     echo "<p> Could not execute query! </p>";

@@ -29,10 +29,10 @@
         </ul>  
 </div>
 
-<h3> Select a supervisor name to show how many employees they supervise and the personal information of each employee.</h3>
+<h3> Input a company ID and all the jobs which have the month payment bigger than the avarage will be displayed.</h3>
 
 <div id="table_all">
-  <h2> Supervisor </h2>
+  <h2> Company List </h2>
 <table id="par_table">
 
 <?php
@@ -50,8 +50,8 @@
 */
     echo "<tr>";
     
-    echo "<th> Supervisor Number </th> ";
-    echo "<th> Name </th> ";
+    echo "<th> Company ID </th> ";
+    echo "<th> Company Name </th> ";
     echo "</tr>";
 
 $username = "cyb14138";
@@ -64,11 +64,14 @@ if (!($conn = mysqli_connect($servername, $username, $password))) {
 }
 
 if (!mysqli_select_db($conn, $database)){
-    die("Unable to select database"); 
+    die("Unable to select database");
+
 }
 
 
-$sql = 'SELECT S.supervisor_number, E.name FROM cw_supervises S, cw_employee E WHERE E.employee_number = S.supervisor_number GROUP BY S.supervisor_number' ;
+//$sql = 'SELECT DISTINCT E.employee_number, E.name, E.address, E.telephone FROM employee E, manages M, site S, occurs O, unit U WHERE E.employee_number = M.employee_number AND M.site_number = S.number AND S.number = O.site_number AND O.unit_number = U.unit_number and U.area > 1000  GROUP BY U.unit_number ORDER BY E.employee_number';
+
+$sql = 'SELECT C.company_id, C.company_name FROM cw_company C ORDER BY C.company_id';
             
 if (!($result = mysqli_query($conn, $sql))){
     die("Could not execute query!"); 
@@ -82,8 +85,9 @@ if(mysqli_num_rows($result) == 0){
     echo "<br>";
     while($r=mysqli_fetch_assoc($result)){
         
-        echo "<td> " . $r['supervisor_number'] ." </td>";
-        echo "<td> " . $r['name'] ." </td>";
+        echo "<td> " . $r['company_id'] ." </td>";
+        echo "<td> " . $r['company_name'] ." </td>";
+        
         echo "</tr>";
         
 
@@ -120,18 +124,18 @@ mysqli_close($conn);
 </table>
 </div>
 
-<h2> Supervisor </h2>
+<h2> Company </h2>
 
-<form method="post" action="https://devweb2014.cis.strath.ac.uk/~cyb14138/cyb14138.github.com/CS952/Coursework/php/query4_out.php">
+<form method="post" action="https://devweb2014.cis.strath.ac.uk/~cyb14138/cyb14138.github.com/CS952/Coursework/php/query2_out.php">
 
-    <table id="table_supervisor">
+    <table id="table_area">
                 <tr>
                   <td>
-                    <label id="lb_supervisor_number">Supervisor Number <label> 
+                    <label id="lb_company"> Company <label> 
                   </td>
 
                   <td>
-                    <input class="input_text" name="supervisor_number" type="text"> </input>
+                    <input class="input_text" name="company" type="text"> </input>
                   </td>    
                 </tr>
          
@@ -162,7 +166,7 @@ mysqli_close($conn);
 <p id="signature"> Version 1.0 - <?php echo date('d/m/Y'); ?> - (C) University of Strathclyde / Emanuel Felipe 2015</p>
 
 
-<script language="javascript" type="text/javascript" src="../js/query4.js"> </script>
+<script language="javascript" type="text/javascript" src="../js/query2.js"> </script>
 
 </body>
 </html>

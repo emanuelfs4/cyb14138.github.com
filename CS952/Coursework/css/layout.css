@@ -1,0 +1,211 @@
+
+html {
+    overflow-y: scroll
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: black;
+    background-color: lightgray;
+}
+
+a {
+    outline: none;
+    text-decoration: none
+}
+
+.left {
+    float: left
+}
+
+.right {
+    float: right
+}
+
+.middle {
+    color: gray;
+    background-color: white;
+}
+
+.bottom{
+    color: gray;
+    background-color: lightgray;
+}
+
+h2{
+    margin: 0 0 8px 0;
+    padding: 0;
+    font-size: 1.4em;
+    font-weight: normal;
+    line-height: normal
+}
+
+#header, #copy {
+    margin: 0 auto;
+    font-size: .8em
+}
+#header {
+    padding: 15px 0 0 0
+}
+
+#header #top_header {
+    display: block;
+    float: left;
+    margin-bottom: 15px
+}
+
+#header #top_header h1, #header #top_header h2 {
+    margin: 0;
+    font-weight: normal;
+    text-transform: none
+}
+
+#header #top_header h1 {
+    font-size: 5em
+}
+
+#header #top_header h2 {
+    font-size: 1em
+}
+
+#header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#header ul li {
+    display: inline-block;
+}
+
+#header .ostbanner {
+    display: block;
+    float: right;
+    margin: 25px 0;
+    clear: right;
+}
+
+#header #topnav {
+    display: block;
+    margin: 0;
+    padding: 20px 15px;
+    text-align: center;
+    clear: both;
+    -moz-border-radius: 8px 8px 0 0;
+    -webkit-border-radius: 8px 8px 0 0;
+    border-radius: 8px 8px 0 0;
+    border: 0 solid black;
+}
+
+#header #topnav, #header #topnav a {
+    color: white;
+    background-color: black;
+    font-size: 1.2em
+}
+
+#header #topnav li {
+
+    margin: 0 40px 0 0;
+}
+
+
+#container {
+    padding: 20px 0;
+    font-size: 1em;
+    line-height: 1.6em;
+}
+
+#container h2{
+    margin-bottom: 40px;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: black;
+    background-color: gray;
+}
+
+ #container h2 span{
+    padding: 0 15px 0 0;
+    background: white;
+}
+
+.submitbutton {
+    display: block;
+    float: right;
+    width: 15%;
+    margin: 0 0 0 30px;
+    padding: 8px 15px;
+    clear: right;
+    color: black;
+    background-color: lightgray;
+    font-weight: bold;
+    border: 0 solid lightgray;
+    border-radius: 10px;
+}
+
+#copy {
+    padding: 20px 0;
+}
+
+#copy p {
+    margin: 0;
+    padding: 0 ;
+}
+
+#header, #container, #copy {
+        max-width: 960px;
+        margin: 0 auto
+}
+
+
+table, td {
+    border: 2px darkgray;
+    border-style:double;
+    border-collapse: collapse;
+}
+table{
+    margin-top: -5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+th{
+    border: 2px solid;
+    border-color: darkgray;
+    font-size: 17px;
+    color:black;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+th:first-child{
+    background-color: lightgray;
+    color: black;
+    border-right: 2px gray;
+
+}
+
+
+tr > td:first-child{
+    text-align: right;
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+#lb_area{
+    font-size: 1.2rem;
+}
+
+

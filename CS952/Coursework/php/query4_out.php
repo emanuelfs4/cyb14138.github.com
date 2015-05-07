@@ -29,30 +29,20 @@
         </ul>  
 </div>
 
-<h3> Select a supervisor name to show how many employees they supervise and the personal information of each employee.</h3>
-
 <div id="table_all">
-  <h2> Supervisor </h2>
-<table id="par_table">
-
+<table id="par_table"><h2> Supervisor </h2>
+ 
 <?php
 
 //CHECK IF SOMETHING WAS WRITTEN ON THE NAME BOX
 
-/*
+
     echo "<tr>";
-    echo "<th> Employee Number </th> ";
-    echo "<th> Name </th> ";
-    echo "<th> Address</th> ";
-    echo "<th> Telephone </th> ";
     echo "<th> Supervisor Number </th> ";
+    echo "<th> Number of employees </th> ";
     echo "</tr>";
-*/
-    echo "<tr>";
-    
-    echo "<th> Supervisor Number </th> ";
-    echo "<th> Name </th> ";
-    echo "</tr>";
+
+   
 
 $username = "cyb14138";
 $password = "atestedi";
@@ -67,8 +57,9 @@ if (!mysqli_select_db($conn, $database)){
     die("Unable to select database"); 
 }
 
+$sup_num = $_POST['supervisor_number'];
 
-$sql = 'SELECT S.supervisor_number, E.name FROM cw_supervises S, cw_employee E WHERE E.employee_number = S.supervisor_number GROUP BY S.supervisor_number' ;
+$sql = 'SELECT S.supervisor_number, count(S.employee_number) AS count FROM cw_supervises S WHERE S.supervisor_number = '. $sup_num .' GROUP BY S.supervisor_number';
             
 if (!($result = mysqli_query($conn, $sql))){
     die("Could not execute query!"); 
@@ -83,18 +74,9 @@ if(mysqli_num_rows($result) == 0){
     while($r=mysqli_fetch_assoc($result)){
         
         echo "<td> " . $r['supervisor_number'] ." </td>";
-        echo "<td> " . $r['name'] ." </td>";
+        echo "<td> " . $r['count'] ." </td>";
         echo "</tr>";
         
-
-        /*
-        echo "<td> " . $r['employee_number'] ." </td>";
-        echo "<td> " . $r['name'] ." </td>";
-        echo "<td> " . $r['address'] ." </td>";
-        echo "<td> " . $r['telephone'] ." </td>";
-        echo "<td> " . $r['supervisor_number'] ." </td>";
-        echo "</tr>";
-        */
     }
     
 }
@@ -111,58 +93,105 @@ mysqli_close($conn);
 //mail ($to , $subject ,$message );
 
 
-
 ?>
-
-
 </p>
 
 </table>
 </div>
 
-<h2> Supervisor </h2>
+<div id="table_all">
+<table id="par_table">
+  <br>
+<hr>
 
-<form method="post" action="https://devweb2014.cis.strath.ac.uk/~cyb14138/cyb14138.github.com/CS952/Coursework/php/query4_out.php">
+<h2> Employee </h2>
+ 
+<?php
 
-    <table id="table_supervisor">
-                <tr>
-                  <td>
-                    <label id="lb_supervisor_number">Supervisor Number <label> 
-                  </td>
+//CHECK IF SOMETHING WAS WRITTEN ON THE NAME BOX
 
-                  <td>
-                    <input class="input_text" name="supervisor_number" type="text"> </input>
-                  </td>    
-                </tr>
-         
-                <tr>
-                  <td>
-                  </td>
 
-                  <td>
-                    <!-- <button type="Submit" id="bt_submit" value="Submit"> Submit </input> -->
-                    <button type="button" id="bt_submit" value="Submit" onclick="check()"> OK </input>
-                  </td>
-                </tr>  
-           </table> 
+    echo "<tr>";
+    echo "<th> Employee Number </th> ";
+    echo "<th> Name </th> ";
+    echo "<th> Address</th> ";
+    echo "<th> Telephone </th> ";
+    echo "</tr>";
 
-</form>
+   
 
-<form action="../index.html">
+$username = "cyb14138";
+$password = "atestedi";
+$database = "cyb14138";
+$servername = "devweb2014.cis.strath.ac.uk";
+
+if (!($conn = mysqli_connect($servername, $username, $password))) { 
+    die("Problem connecting to database server"); 
+}
+
+if (!mysqli_select_db($conn, $database)){
+    die("Unable to select database"); 
+}
+
+$sup_num = $_POST['supervisor_number'];
+
+$sql = 'SELECT S.employee_number, E.name, E.address, E.telephone FROM cw_supervises S, cw_employee E WHERE E.employee_number = S.employee_number AND S.supervisor_number = '. $sup_num;
+            
+if (!($result = mysqli_query($conn, $sql))){
+    die("Could not execute query!"); 
+}
+
+if(mysqli_num_rows($result) == 0){
+    echo "<p> No rows found </p> ";
+}else{
+
+    echo "<tr>";
+    echo "<br>";
+    while($r=mysqli_fetch_assoc($result)){
+        
+        echo "<td> " . $r['employee_number'] ." </td>";
+        echo "<td> " . $r['name'] ." </td>";
+        echo "<td> " . $r['address'] ." </td>";
+        echo "<td> " . $r['telephone'] ." </td>";
+        echo "</tr>";
+        
+    }
+    
+}
+
+
+//$sql = 'DELETE * FROM lab_parking_q6 WHERE ';
+
+
+
+
+mysqli_close($conn);
+
+
+//mail ($to , $subject ,$message );
+
+
+?>
+</p>
+
+</table>
+</div>
+
+
+<div id="table_all">
+<table id="par_table">
+<br>
+
+<form action="../php/query4.php">
   <div class="div_bt">
 
-    <button id="bt_back"type="submit" value="Back"> Back </button>
+    <button id="bt_back" type="submit" value="Back"> Back </button>
 
   </div>  
 
 </form>
 
- 
 <hr class="bottom_line">
 <p id="signature"> Version 1.0 - <?php echo date('d/m/Y'); ?> - (C) University of Strathclyde / Emanuel Felipe 2015</p>
-
-
-<script language="javascript" type="text/javascript" src="../js/query4.js"> </script>
-
 </body>
 </html>

@@ -1,0 +1,49 @@
+Input a company ID and all the jobs which have the month payment bigger than the avarage will be displayed.
+
+
+SELECT C.company_id, C.company_name, J.job_number, J.description, M.start_date, M.end_date, M.month_payment FROM company C, job J, maintenance M Where C.company_id = M.company_id AND M.job_number = J.job_number and M.month_payment > (Select AVG(month_payment) FROM maintenance)
+
+
+
+
+Select all the job of a company in which the job itself have a higher monthly payment bigger than the avarage of all maintenance jobs.
+
+Input a company ID and the month and year of the start date and all the jobs of the company in which the month payment is bigger than the avarage of all the months payment of the company
+
+
+(SELECT M.company_id, AVG(M.month_payment) FROM maintenance M GROUP BY M.company_id)
+
+SELECT * FROM maintenance M1 WHERE M1.month_payment >(SELECT AVG(M2.month_payment) FROM maintenance M2 WHERE M1.company_id = M2.company_id GROUP BY M2.company_id ORDER BY M2.company_id)
+
+SELECT M1.company_id, C.company_name, M1.job_number, J.description, M1.start_date, M1.end_date, M1.month_payment FROM maintenance M1, company C, job J WHERE M1.company_id = C.company_id AND M1.job_number = J.job_number AND M1.month_payment >(SELECT AVG(M2.month_payment) FROM maintenance M2 WHERE M1.company_id = M2.company_id GROUP BY M2.company_id ORDER BY M2.company_id) order by M1.company_id
+
+
+
+SELECT M1.company_id, C.company_name, M1.job_number, J.description, M1.start_date, M1.end_date, M1.month_payment FROM maintenance M1, company C, job J WHERE '2015-06-' BETWEEN M1.start_date and M1.end_date AND M1.company_id = C.company_id AND M1.job_number = J.job_number AND M1.month_payment >(SELECT AVG(M2.month_payment) FROM maintenance M2 WHERE M1.company_id = M2.company_id GROUP BY M2.company_id ORDER BY M2.company_id) order by M1.company_id
+
+
+
+SELECT M1.company_id, C.company_name, M1.job_number, J.description, M1.start_date, M1.end_date, M1.month_payment FROM maintenance M1, company C, job J WHERE start_date <= '2015-04-__' AND end_date >= '2015-04'AND M1.company_id = C.company_id AND M1.job_number = J.job_number AND M1.month_payment >(SELECT AVG(M2.month_payment) FROM maintenance M2 WHERE M1.company_id = M2.company_id GROUP BY M2.company_id ORDER BY M2.company_id) order by M1.company_id
+
+
+SELECT * FROM maintenance WHERE start_date <= '2015-04-__' AND end_date >= '2015-04'
+
+
+
+(SELECT C.company_id ,avg(M1.month_payment) FROM cw_company C, cw_maintenance M1, cw_cm CM1, cw_job J, cw_jm JM WHERE C.company_id = CM1.company_id AND CM1.maintenance_id = M1.maintenance_id AND J.job_number = JM.job_number AND JM.maintenance_id = M1.maintenance_id GROUP BY C.company_id)
+
+
+(SELECT C2.company_id ,avg(M2.month_payment) FROM cw_company C2, cw_maintenance M2, cw_cm CM2, cw_job J2, cw_jm JM2 WHERE C2.company_id = CM2.company_id AND CM2.maintenance_id = M2.maintenance_id AND J2.job_number = JM2.job_number AND JM2.maintenance_id = M2.maintenance_id GROUP BY C2.company_id ORDER BY C2.company_id)
+
+
+
+
+SELECT C1.company_id ,C1.company_name, J1.job_number, J1.job_description, M1.start_date, M1.end_date, M1.month_payment FROM cw_company C1, cw_maintenance M1, cw_cm CM1, cw_job J1, cw_jm JM1 WHERE C1.company_id = CM1.company_id AND CM1.maintenance_id = M1.maintenance_id AND J1.job_number = JM1.job_number AND JM1.maintenance_id = M1.maintenance_id
+
+
+
+
+SELECT C1.company_id ,C1.company_name, J1.job_number, J1.job_description, M1.start_date, M1.end_date, M1.month_payment FROM cw_company C1, cw_maintenance M1, cw_cm CM1, cw_job J1, cw_jm JM1 WHERE C1.company_id = CM1.company_id AND CM1.maintenance_id = M1.maintenance_id AND J1.job_number = JM1.job_number AND JM1.maintenance_id = M1.maintenance_id AND M1.start_date <= '2015-04-__' AND M1.end_date >= '2015-04' AND C1.company_id = (SELECT avg(M2.month_payment) FROM cw_company C2, cw_maintenance M2, cw_cm CM2, cw_job J2, cw_jm JM2 WHERE C2.company_id = CM2.company_id AND CM2.maintenance_id = M2.maintenance_id AND J2.job_number = JM2.job_number AND JM2.maintenance_id = M2.maintenance_id GROUP BY C2.company_id ORDER BY C2.company_id)
+
+
+SELECT C1.company_id ,C1.company_name, J1.job_number, J1.job_description, M1.start_date, M1.end_date, M1.month_payment FROM cw_company C1, cw_maintenance M1, cw_cm CM1, cw_job J1, cw_jm JM1 WHERE C1.company_id = CM1.company_id AND CM1.maintenance_id = M1.maintenance_id AND J1.job_number = JM1.job_number AND JM1.maintenance_id = M1.maintenance_id AND M1.start_date <= '2015-04-__' AND M1.end_date >= '2015-04' AND M1.month_payment <(SELECT avg(M2.month_payment) FROM cw_company C2, cw_maintenance M2, cw_cm CM2, cw_job J2, cw_jm JM2 WHERE C2.company_id = CM2.company_id AND CM2.maintenance_id = M2.maintenance_id AND J2.job_number = JM2.job_number AND JM2.maintenance_id = M2.maintenance_id AND C1.company_id = C2.company_id GROUP BY C2.company_id)

@@ -29,30 +29,33 @@
         </ul>  
 </div>
 
-<h3> Select a supervisor name to show how many employees they supervise and the personal information of each employee.</h3>
+
 
 <div id="table_all">
-  <h2> Supervisor </h2>
+  <h2> Jobs </h2>
 <table id="par_table">
 
 <?php
 
 //CHECK IF SOMETHING WAS WRITTEN ON THE NAME BOX
 
-/*
+
     echo "<tr>";
-    echo "<th> Employee Number </th> ";
-    echo "<th> Name </th> ";
-    echo "<th> Address</th> ";
-    echo "<th> Telephone </th> ";
-    echo "<th> Supervisor Number </th> ";
+    echo "<th> Company ID </th> ";
+    echo "<th> Company Name </th> ";
+    echo "<th> Job Number</th> ";
+    echo "<th> Description </th> ";
+    echo "<th> Start Date </th> ";
+    echo "<th> End Date </th> ";
+    echo "<th> Month Payment</th> ";
     echo "</tr>";
-*/
+/*
     echo "<tr>";
     
     echo "<th> Supervisor Number </th> ";
     echo "<th> Name </th> ";
     echo "</tr>";
+*/
 
 $username = "cyb14138";
 $password = "atestedi";
@@ -64,12 +67,19 @@ if (!($conn = mysqli_connect($servername, $username, $password))) {
 }
 
 if (!mysqli_select_db($conn, $database)){
-    die("Unable to select database"); 
+    die("Unable to select database");
+
 }
 
 
-$sql = 'SELECT S.supervisor_number, E.name FROM cw_supervises S, cw_employee E WHERE E.employee_number = S.supervisor_number GROUP BY S.supervisor_number' ;
-            
+$year = $_POST['year'];
+$month = $_POST['month'];
+
+
+//$sql = "SELECT M1.company_id, C.company_name, M1.job_number, J.description, M1.start_date, M1.end_date, M1.month_payment FROM maintenance M1, company C, job J WHERE C.company_id = ". $comp_id . " AND start_date <= '" . $year . "-".$month."-__' AND end_date >= '" . $year. "-". $month ."-__'AND M1.company_id = C.company_id AND M1.job_number = J.job_number AND M1.month_payment >(SELECT AVG(M2.month_payment) FROM maintenance M2 WHERE M1.company_id = M2.company_id GROUP BY M2.company_id ORDER BY M2.company_id) order by M1.company_id";
+
+$sql = "SELECT C1.company_id ,C1.company_name, J1.job_number, J1.job_description, M1.start_date, M1.end_date, M1.month_payment FROM cw_company C1, cw_maintenance M1, cw_cm CM1, cw_job J1, cw_jm JM1 WHERE C1.company_id = CM1.company_id AND CM1.maintenance_id = M1.maintenance_id AND J1.job_number = JM1.job_number AND JM1.maintenance_id = M1.maintenance_id AND M1.start_date <= '". $year ."-" .$month . "-__' AND M1.end_date >= '". $year ."-" .$month . "-__' AND M1.month_payment >(SELECT avg(M2.month_payment) FROM cw_company C2, cw_maintenance M2, cw_cm CM2, cw_job J2, cw_jm JM2 WHERE C2.company_id = CM2.company_id AND CM2.maintenance_id = M2.maintenance_id AND J2.job_number = JM2.job_number AND JM2.maintenance_id = M2.maintenance_id AND C1.company_id = C2.company_id GROUP BY C2.company_id)";
+
 if (!($result = mysqli_query($conn, $sql))){
     die("Could not execute query!"); 
 }
@@ -82,8 +92,13 @@ if(mysqli_num_rows($result) == 0){
     echo "<br>";
     while($r=mysqli_fetch_assoc($result)){
         
-        echo "<td> " . $r['supervisor_number'] ." </td>";
-        echo "<td> " . $r['name'] ." </td>";
+        echo "<td> " . $r['company_id'] ." </td>";
+        echo "<td> " . $r['company_name'] ." </td>";
+        echo "<td> " . $r['job_number'] ." </td>";
+        echo "<td> " . $r['job_description'] ." </td>";
+        echo "<td> " . $r['start_date'] ." </td>";
+        echo "<td> " . $r['end_date'] ." </td>";
+        echo "<td> " . $r['month_payment'] ." </td>";
         echo "</tr>";
         
 
@@ -120,35 +135,7 @@ mysqli_close($conn);
 </table>
 </div>
 
-<h2> Supervisor </h2>
-
-<form method="post" action="https://devweb2014.cis.strath.ac.uk/~cyb14138/cyb14138.github.com/CS952/Coursework/php/query4_out.php">
-
-    <table id="table_supervisor">
-                <tr>
-                  <td>
-                    <label id="lb_supervisor_number">Supervisor Number <label> 
-                  </td>
-
-                  <td>
-                    <input class="input_text" name="supervisor_number" type="text"> </input>
-                  </td>    
-                </tr>
-         
-                <tr>
-                  <td>
-                  </td>
-
-                  <td>
-                    <!-- <button type="Submit" id="bt_submit" value="Submit"> Submit </input> -->
-                    <button type="button" id="bt_submit" value="Submit" onclick="check()"> OK </input>
-                  </td>
-                </tr>  
-           </table> 
-
-</form>
-
-<form action="../index.html">
+<form action="./query1.php">
   <div class="div_bt">
 
     <button id="bt_back"type="submit" value="Back"> Back </button>
@@ -162,7 +149,7 @@ mysqli_close($conn);
 <p id="signature"> Version 1.0 - <?php echo date('d/m/Y'); ?> - (C) University of Strathclyde / Emanuel Felipe 2015</p>
 
 
-<script language="javascript" type="text/javascript" src="../js/query4.js"> </script>
+<script language="javascript" type="text/javascript" src="../js/query3.js"> </script>
 
 </body>
 </html>

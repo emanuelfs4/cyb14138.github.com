@@ -24,7 +24,8 @@
         <li><a href="./php/query_1.php" title="Query 1">Query 1</a></li>
         <li><a href="./php/query_2.php" title="Query 2">Query 2</a></li>
         <li><a href="./php/query_3.php" title="Query 3">Query 3</a></li>
-        <li class="last"><a href="./php/query_4.php" title="Query 4">Query 4</a></li>
+        <li><a href="./php/query_4.php" title="Query 3">Query 4</a></li>
+        <li class="last"><a href="./php/about.php" title="Query 4">About</a></li>
 
       </ul>
     </nav>
@@ -56,7 +57,7 @@
     <p>Will display all the jobs of the company entered which have month payment bigger than the average month payment.</p>
 
     <h2><span><a href='./php/query_3.php'> Query 3</a></span></h2>
-    <p> Will display all the jobs of every company that have the month payment bigger that the average payment month of the company, that are realized during the period entered by the user.</p>
+    <p> Will display all the jobs of every company that have the month payment bigger than the average payment month of the company, that are realized during the period entered by the user.</p>
 
       <h2><span><a href='./php/query_4.php'> Query 4</a></span></h2>
     <p> Will display information about all the employees supervised by the entered supervises number.</p>
@@ -65,7 +66,7 @@
 
 <div class="bottom">
   <footer id="copy" class="clear">
-    <p class="left">Version 1.0 - 07/05/2015</p>
+    <p class="left">Version 1.0 - <?php echo date('d/m/Y'); ?></p>
     <p class="right">Emanuel Felipe | (C) University of Strathclyde </p>
   </footer>
 </div>

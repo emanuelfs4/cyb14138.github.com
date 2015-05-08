@@ -17,16 +17,17 @@
       <h1>TBUS</h1>
       <h2>Temporary Building Unit System</h2>
     </div>
-    
-    <nav id="topnav">
+  <nav id="topnav">
+
       <ul><li><a href="../index.php" title="Home">Home</a></li>
         <li><a href="./query_1.php" title="Query 1">Query 1</a></li>
         <li><a href="./query_2.php" title="Query 2">Query 2</a></li>
         <li><a href="./query_3.php" title="Query 3">Query 3</a></li>
-        <li class="last"><a href="./query_4.php" title="Query 4">Query 4</a></li>
+        <li><a href="./query_4.php" title="Query 3">Query 4</a></li>
+        <li class="last"><a href="./about.php" title="Query 4">About</a></li>
+
       </ul>
     </nav>
-
 
   </header>
 </div>
@@ -38,6 +39,7 @@
     <div id="latest">
 
       <section id="showcase">
+        <p> Enter a supervisor number to show how many employees they supervise and the personal information of each employee.</p>
         <h2><span>Supervisor List</span></h2>
         <div>
           <table id="par_table">
@@ -118,7 +120,7 @@
   <script language="javascript" type="text/javascript" src="../js/query4.js"> </script>
   <div class="bottom">
     <footer id="copy" class="clear">
-      <p class="left">Version 1.0 - 07/05/2015</p>
+      <p class="left">Version 1.0 - <?php echo date('d/m/Y'); ?></p>
       <p class="right">Emanuel Felipe | (C) University of Strathclyde </p>
     </footer>
   </div>

@@ -129,7 +129,7 @@
       </div>
     </div>
 
-    <script language="javascript" type="text/javascript" src="../js/query3.js"> </script>
+    <script language="javascript" type="text/javascript" src="../js/third_tab.js"> </script>
     <div class="bottom">
       <footer id="copy" class="clear">
         <p class="left">Version 1.0 - <?php echo date('d/m/Y'); ?></p>

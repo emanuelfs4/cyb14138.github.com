@@ -137,7 +137,7 @@ mysqli_close($conn);
   </div>
 </div>
 
-<script language="javascript" type="text/javascript" src="../js/query1.js"> </script>
+<script language="javascript" type="text/javascript" src="../js/first_tab.js"> </script>
   <div class="bottom">
     <footer id="copy" class="clear">
       <p class="left">Version 1.0 - <?php echo date('d/m/Y'); ?></p>

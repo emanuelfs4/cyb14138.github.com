@@ -3,17 +3,31 @@
 function check(){
 
 
-	sup_number = document.getElementsByName('area')[0].value;
+	area = document.getElementsByName('area')[0].value;
 
 //	alert(sup_number);
+	
+	document.getElementById('bt_submit').type = "button";
 
-	if(sup_number == parseInt(sup_number,10)){
+
+        if(area.indexOf("or") != -1){
+
+		alert("* Please insert a valid supervisor number.");
+
+		}else{
+		if(area == parseInt(area,10)){
+
 		//alert("is Int");
-		document.getElementById('bt_submit').type = "Submit"
-	}else{
-		alert("Please insert a valid area number");
+		if(area >= 0){
+
+				document.getElementById('bt_submit').type = "Submit";
+			}else{
+				alert("* Please insert a valid area number");
+		}
+		
+		}else{
+			alert("* Please insert a valid area number.");	
+		}
 	}
-
-
 	
 }

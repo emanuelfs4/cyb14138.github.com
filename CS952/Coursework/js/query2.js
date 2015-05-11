@@ -2,18 +2,29 @@
 
 function check(){
 
+	company_id = document.getElementsByName('company')[0].value;
 
-	sup_number = document.getElementsByName('company')[0].value;
 
-//	alert(sup_number);
+	
+	document.getElementById('bt_submit').type = "button";
 
-	if(sup_number == parseInt(sup_number,10)){
-		//alert("is Int");
-		document.getElementById('bt_submit').type = "Submit"
-	}else{
-		alert("Please insert a valid area number");
+
+        if(company_id.indexOf("or") != -1){
+                  alert("* Please insert a valid supervisor number.");
+        }else{
+
+		if(company_id == parseInt(company_id,10)){
+			//alert("is Int");
+			if(company_id >= 0){
+				document.getElementById('bt_submit').type = "Submit";
+			}else{
+				alert("* Please insert a valid area number");
+			}
+
+		}else{
+			alert("* Please insert a valid area number.");
+		}
 	}
-
 
 	
 }

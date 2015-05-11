@@ -11,11 +11,16 @@ function check(){
 //
 
 	str = "";
-
+	document.getElementById("bt_submit").type = "button";
 
 	if(year == parseInt(year,10)){
 		//alert("is Int");
 		//document.getElementById('bt_submit').type = "Submit"	
+		if(year >=2000){
+			
+		}else{
+			str = str + "* Please insert a valid year.\n";
+		}
 	}else{
 
 		str = str + "* Please insert a valid year.\n";
@@ -24,7 +29,11 @@ function check(){
 
 	if(month == parseInt(month,10)){
 		//alert("is Int");
-		//document.getElementById('bt_submit').type = "Submit"	
+		//document.getElementById('bt_submit').type = "Submit"
+		if(month >= 1 && month <= 12){
+		}else{
+			str = str + "* Please inser a valid month.\n";
+		}	
 	}else{
 
 		str = str + "* Please insert a valid month.\n";
@@ -36,7 +45,7 @@ function check(){
 	if(str.length != 0){
 		alert(str);
 	}else{
-		document.getElementById('bt_submit').type = "Submit"	
+		document.getElementById('bt_submit').type = "Submit";	
 	}
 
 
